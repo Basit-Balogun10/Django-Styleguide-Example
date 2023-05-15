@@ -106,6 +106,7 @@ WSGI_APPLICATION = "config.wsgi.application"
 DATABASES = {
     "default": env.db("DATABASE_URL", default="postgres:///styleguide_example"),
 }
+DATABASES["default"]["ATOMIC_REQUESTS"] = True
 
 if os.environ.get("GITHUB_WORKFLOW"):
     DATABASES = {
@@ -118,7 +119,6 @@ if os.environ.get("GITHUB_WORKFLOW"):
             "PORT": "5432",
         }
     }
-DATABASES["default"]["ATOMIC_REQUESTS"] = True
 
 
 # Password validation
